@@ -16,14 +16,14 @@
     <!-- Menu -->
     <header class="site-header sticky-top py-1">
         <nav class="container d-flex flex-column flex-md-row justify-content-between">
-          <a class="py-2" href="#" aria-label="Product">
+          <a class="py-2" href="{% url 'inicio' %}" aria-label="Product">
             <img src="{% static 'media/img/python.png' %}" width="35" />
           </a>
 
           <!-- Enlaces Y control de inicio de sesion: -->
           
             <li class="nav-item d-none d-md-inline-block active">
-              <a class="py-2 nav-link mt-3" href="{% url 'inicio' %}">Software para la gestión de Fondo de Empleados</a>
+              <a class="py-2 nav-link mt-3" href="{% url 'inicio' %}">FEMEL Software para la gestión de Fondo de Empleados</a>
             </li>
             
             {% if request.user.is_authenticated %}

@@ -3,8 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db.models import fields
 from django.forms import widgets
-from .models import Profile, ContactoEmergencia
-from pqrs.models import Quejas, AccionesQueja
+from .models import Profile
 
 
 # Formulario para validar email ya registrado::
@@ -40,25 +39,3 @@ class ProfileForm(forms.ModelForm):
             'fecha_nacimiento': forms.DateInput(format=('%Y-%m-%d'), attrs = {'class':'form-control mt-2', 'type':'date', 'placeholder':'Fecha de nacimiento'}),
         }
 
-# Clase para el formulario de contacto de emergencia
-class ContactoEmergenciaForm(forms.ModelForm):
-    class Meta:
-        model = ContactoEmergencia
-        fields = ['usuario','contacto_emergencia','parentesco_emergencia','telefono_emergencia']
-        widgets = {
-            'usuario': forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'usuario'}),
-            'contacto_emergencia':  forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Contacto de emergencia'}),
-            'parentesco_emergencia': forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Parentesco'}),
-            'telefono_emergencia': forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Teléfono de emergencia'}),
-            
-        }
-
-class PqrsForm(forms.ModelForm):
-    model = Quejas
-    fields = ['usuario','contacto_emergencia','parentesco_emergencia','telefono_emergencia']
-    widgets = {
-        # 'usuario': forms.TextInput(attrs= {'class':'form-control', 'value':}),
-        'queja': forms.TextInput(attrs= {'class':'form-control mt-2', 'rows':'4' }),
-        'evidencia': forms.TextInput(attrs= {'class':'form-control mt-2'}),
-        'soporte': forms.FileInput(attrs= {'class':'form-control mt-2'})
-    }
