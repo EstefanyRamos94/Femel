@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # Mis aplicaciones del aplicativo:
     'core',
     'empleados',
-    'fondo'
+    'fondo',
+    'planer',
 ]
 
 MIDDLEWARE = [
