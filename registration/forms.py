@@ -27,7 +27,7 @@ class UserCreationWithEmail(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar','profesion','cedula','telefono', 'celular','direccion', 'genero', 'fecha_nacimiento']
+        fields = ['avatar','profesion','cedula','telefono', 'celular','direccion', 'genero', 'fecha_nacimiento', 'lugar_nacimiento']
         widgets = {
             'avatar': forms.ClearableFileInput(attrs = {'class':'form-control mt-2'}),
             'profesion': forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Profesión u Ocupación'}),
@@ -37,5 +37,6 @@ class ProfileForm(forms.ModelForm):
             'direccion': forms.TextInput(attrs = {'class':'form-control mt-2', 'placeholder':'Dirección'}),
             'genero': forms.Select(attrs = {'class':'form-control mt-2'}),
             'fecha_nacimiento': forms.DateInput(format=('%Y-%m-%d'), attrs = {'class':'form-control mt-2', 'type':'date', 'placeholder':'Fecha de nacimiento'}),
+            'lugar_nacimiento': forms.TextInput(attrs={'class':'form-control mt-2', 'placeholder':'Ciudad de Nacimiento'})
         }
 

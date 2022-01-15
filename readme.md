@@ -11,10 +11,19 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_Es Necesario tener un entorno de ejecución con las siguientes librerías instaladas:
 
 ```
-Da un ejemplo
+* asgiref==3.4.1
+* Django==3.2.7
+* django-ckeditor==6.2.0
+* django-js-asset==1.2.2
+* mysql==0.0.3
+* mysqlclient==2.1.0
+* Pillow==9.0.0
+* python-dotenv==0.19.2
+* pytz==2021.3
+* sqlparse==0.4.2
 ```
 
 ### Instalación 🔧

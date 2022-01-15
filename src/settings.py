@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Mis aplicaciones del aplicativo:
+    'ckeditor'
     'core',
     'empleados',
     'fondo',
-    'planer',
+    'periodos',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,10 @@ DATABASES = {
         'NAME': os.getenv('DBNAME'),
         'USER': os.getenv('DBUSER'),
         'PASSWORD': os.getenv('DBPASS'),
-        'PORT': os.getenv('DBPORT')
+        'PORT': os.getenv('DBPORT'),
+        'OPTIONS': {
+             'sql_mode': 'STRICT_TRANS_TABLES'
+        }
     }
 }
 
@@ -149,3 +153,20 @@ STATICFILES_DIRS = (
 
 # Modificando la redirección de Cerrar Sesión:
 LOGOUT_REDIRECT_URL = 'inicio'
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+    },
+}
+# CKEDITOR_CONFIGS = {
+#     'default':{
+#         'toolbar' : 'Custom',
+#         'toolbar_Custom':[
+#             ['Bold', 'Italic', 'Underline'],
+#             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-' 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+#             ['Link', 'Unlink'],
+#             ['RemoveFormat', 'Source']
+#         ]
+#     }
+# }

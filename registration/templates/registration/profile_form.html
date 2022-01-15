@@ -14,20 +14,16 @@
                     Esta información corresponde a la presentación que tendremos dentro del aplicativo. Otros usuarios pueden ver esta información
                     y tomar la decisión de contactarte.
                 </strong></p>
-                <!-- <p class="text-light"><small>
+                <p class="text-light"><small>
                     {% if request.user.first_name %}
                         {{user.first_name}}
                     {% else %}
                         {{user.username}}
                     {% endif %}
-                </small></p> -->
+                </small></p>
                 <hr class="">
                 <div class="col">
-                    <!-- <div class="nav-wrapper bg-warning">
-                        <h4 class="bg-light mt-2 mb-2">Registrar PQRS</h4>
-                        <a class="btn btn-secondary btn-lg mt-2 mb-2" target="_blank" href="#">Registrar PQRS</a>
-                        <a class="btn btn-danger btn-lg mt-2 mb-2 text-light" target="_blank" href="">Ver Estado de PQRS</a>
-                    </div> -->
+                    
                 </div>
             </div>
             
@@ -56,13 +52,17 @@
                                         <label class="text-primary mt-2" for=""><strong>Celular</strong></label>
                                         {{form.celular}}
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-2">
                                         <label class="text-primary mt-2" for=""><strong>Género</strong></label>
                                         {{form.genero}}
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <label class="text-primary mt-2" for=""><strong>Fecha de nacimiento</strong></label>
                                         {{form.fecha_nacimiento}}
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="text-primary mt-2" for=""><strong>Lugar de nacimiento</strong></label>
+                                        {{form.lugar_nacimiento}}
                                     </div>
                                     <div class="col-12">
                                         <label class="text-primary mt-2" for=""><strong>Dirección</strong></label>

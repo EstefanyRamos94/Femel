@@ -3,5 +3,5 @@ from django.apps import AppConfig
 
 class PlanerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'planer'
-    verbose_name = 'Plan de periodos'
+    name = 'periodos'
+    verbose_name = 'Modulo de Periodo de Ejecución'

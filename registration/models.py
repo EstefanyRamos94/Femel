@@ -1,7 +1,5 @@
 """ 
     Archivo para el modelo de datos del perfil de usuario
-    nov-2021
-    Eder Lara
 """
 from django.db import models
 from django.contrib.auth.models import User
@@ -27,6 +25,7 @@ class Profile(models.Model):
     direccion = models.TextField(verbose_name="Dirección", null=True, blank=True)
     genero = models.CharField(verbose_name="Género", choices= Generos, max_length=20, default= "Otro")
     fecha_nacimiento = models.DateField(auto_now=False, auto_now_add=False, verbose_name= "Fecha de nacimiento", null=True, blank=True)
+    lugar_nacimiento = models.CharField(verbose_name="Lugar de Nacimiento", max_length=250, null = True, blank= True)
     create_at = models.DateField(auto_now=False, auto_now_add=True, verbose_name="Fecha de creación", null=True, blank=True) 
     modify_at = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de actualización", null=True, blank=True)
 
