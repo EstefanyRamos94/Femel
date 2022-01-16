@@ -24,7 +24,7 @@ class Empleados(models.Model):
         ordering = ['usuario__username']
 
     def __str__(self):
-        return {self.usuario}
+        return f'{self.usuario}'
 
 class DatosEmpleado(models.Model):
     usuario = models.OneToOneField(User, on_delete=CASCADE, verbose_name='Empleado')
@@ -43,5 +43,5 @@ class DatosEmpleado(models.Model):
         ordering = ['usuario__username']
 
     def __str__(self):
-        return {self.usuario}
+        return f'{self.usuario}'
     

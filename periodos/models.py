@@ -25,7 +25,7 @@ class Periodo(models.Model):
         return f'{self.periodo}' 
 
 class Meses(models.Model):
-    mes = models.CharField(verbose_name='Mes', max_length=20, choices=Meses, default='Enero')
+    mes = models.CharField(verbose_name='Mes', max_length=20, choices=Meses, unique=True)
     create_at = models.DateField(auto_now_add=True, null=True, blank=True)
     update_at = models.DateField(auto_now=True)
 
@@ -33,4 +33,4 @@ class Meses(models.Model):
         verbose_name_plural = 'Mes de Ejecución'
 
     def __str__(self) -> str:
-        return {self.mes}
+        return f'{self.mes}'
