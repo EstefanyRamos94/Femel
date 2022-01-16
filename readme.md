@@ -11,7 +11,7 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Es Necesario tener un entorno de ejecución con las siguientes librerías instaladas:
+_Es Necesario tener un entorno de ejecución con las siguientes librerías instaladas:_
 
 ```
 * asgiref==3.4.1
@@ -72,9 +72,11 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Django](https://www.djangoproject.com/start/overview/) - El framework web usado
+* [MySQL](https://www.mysql.com/) - El motor de Base de datos
+* [Boostrap](https://www.djangoproject.com/start/overview/) - El framework html usado
+* [Pip](https://pypi.org/project/pip/) - Manejador de dependencias
+* [GitHub](https://github.com/) - Usado para manejar el flujo de trabajo y control de versiones
 
 ## Contribuyendo 🖇️
 
