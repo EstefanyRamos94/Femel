@@ -71,7 +71,7 @@ class DetalleSolicitudes(models.Model):
     modify_at = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de actualización", null=True, blank=True)
 
     class Meta:
-        verbose_name_plural = 'Detalle de Solicitudes'
+        verbose_name_plural = 'Gestión de Solicitudes'
 
     def __str__(self) -> str:
         return f'{self.solicitud}'

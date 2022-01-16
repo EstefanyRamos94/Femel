@@ -29,7 +29,17 @@ class SolicitudesCreditoAdmin(admin.ModelAdmin):
     class Meta:
         model = SolicitudCredito
 
+class DetalleSolicitudesAdmin(admin.ModelAdmin):
+    readonly_fields = ('create_at', 'modify_at')
+    list_display = ('solicitud',)
+    ordering = ('solicitud',)
+    search_fields = ('solicitud',)
+
+    class Meta:
+        model = DetalleSolicitudes
+
 
 admin.site.register(LineaCredito, LineaCreditoAdmin)
 admin.site.register(DocumentosRequeridos, DocumentosRequeridosAdmin)
 admin.site.register(SolicitudCredito, SolicitudesCreditoAdmin)
+admin.site.register(DetalleSolicitudes, DetalleSolicitudesAdmin)

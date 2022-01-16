@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'empleados',
     'fondo',
     'periodos',
+    'transacciones'
 ]
 
 MIDDLEWARE = [
