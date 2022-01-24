@@ -39,21 +39,14 @@
       <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
     </div>
     <div class="col-6 col-md">
-      <h5>Features</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary" href="#">Random feature</a></li>
-        <li><a class="link-secondary" href="#">Team feature</a></li>
-        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-        <li><a class="link-secondary" href="#">Another one</a></li>
-        <li><a class="link-secondary" href="#">Last time</a></li>
-      </ul>
+      <h5>Lineas de crédito</h5>
+      <a href="{% url 'linea' %}"><img class="img-fluid" src="{% static 'media/img/creditos.jpg' %}" width="70%" alt=""></a>
     </div>
 
     <div class="col-6 col-md">
       <h5>About</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Team</a></li>
+        <li><a class="link-secondary" href="{% url 'team' %}">Team</a></li>
         <li><a class="link-secondary" href="#">Politicas</a></li>
         <li><a class="link-secondary" href="#">Terminos y Condiciones</a></li>
       </ul>
@@ -65,7 +58,7 @@
           <a
             class="link-secondary"
             target="_blank"
-            href="https://github.com/viewEder/SG-SST-1H"
+            href="https://github.com/EstefanyRamos94/Femel"
             >Repositorio</a
           >
         </li>

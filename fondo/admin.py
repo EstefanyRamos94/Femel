@@ -22,16 +22,16 @@ class DocumentosRequeridosAdmin(admin.ModelAdmin):
 
 class SolicitudesCreditoAdmin(admin.ModelAdmin):
     readonly_fields = ('create_at', 'modify_at')
-    list_display = ('usuario','credito', 'monto_credito')
-    ordering = ('usuario',)
-    search_fields = ('usuario','credito', 'monto_credito')
+    list_display = ('usuario','credito', 'monto_credito', 'estado_solicitud')
+    ordering = ('usuario','estado_solicitud', 'credito', 'monto_credito')
+    search_fields = ('usuario','credito', 'monto_credito','estado_solicitud')
 
     class Meta:
         model = SolicitudCredito
 
 class DetalleSolicitudesAdmin(admin.ModelAdmin):
     readonly_fields = ('create_at', 'modify_at')
-    list_display = ('solicitud',)
+    list_display = ('solicitud','valor_aprobado')
     ordering = ('solicitud',)
     search_fields = ('solicitud',)
 

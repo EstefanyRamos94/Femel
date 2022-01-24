@@ -1,0 +1,11 @@
+# Ejecutar este script en el motor de la base de datos:
+DELIMITER $$
+CREATE TRIGGER actsolicitud
+AFTER INSERT ON femel.fondo_detallesolicitudes
+FOR EACH ROW
+BEGIN
+      UPDATE femel.fondo_solicitudcredito inner join fondo_detallesolicitudes
+      set fondo_solicitudcredito.estado_solicitud = 'Aceptada'
+      where fondo_detallesolicitudes.solicitud_id = fondo_solicitudcredito.id;
+END$$
+DELIMITER ;

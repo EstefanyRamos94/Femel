@@ -166,3 +166,5 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+#ADMIN.SITE.TITTLE = 'Administración FEMEL'

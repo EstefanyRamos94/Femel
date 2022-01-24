@@ -15,7 +15,7 @@ def subir_documentos(instance, filename):
 # Create your models here.
 
 class DocumentosRequeridos(models.Model):
-    nombre_documento = models.CharField(verbose_name='Nombre de Documento', max_length=120, null=False)
+    nombre_documento = models.CharField(verbose_name='Nombre de Documento', max_length=255, null=False, unique=True)
     create_at = models.DateField(auto_now=False, auto_now_add=True, verbose_name="Fecha de creación", null=True, blank=True) 
     modify_at = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de actualización", null=True, blank=True)
 

@@ -27,7 +27,7 @@ class Transaccion(models.Model):
         verbose_name_plural = 'Transacciones'
 
     def __str__(self) -> str:
-        return f'{self.transaccion}'
+        return f'{self.transaccion} - {self.concepto}'
 
 
 
