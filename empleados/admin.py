@@ -4,7 +4,7 @@ from .models import *
 
 # Register your models here.
 class EmpleadosAdmin(admin.ModelAdmin):
-    readonly_fields = ('create_at', 'modify_at')  # no permite modificar estos campos
+    readonly_fields = ('create_at', 'modify_at','estado')  # no permite modificar estos campos
     list_display = ('usuario', 'cargo', 'contrato','estado')
     ordering = ('cargo','contrato')
     search_fields = ('cargo',)
