@@ -5,12 +5,23 @@ from core.types.sino import SiNo
 from core.types.vinculacion import Vinculacion
 from core.types.plazos import PlazoMaximo
 from core.types.estadosolicitud import EstadoSolicitud
+from core.types.cuotas import TipoCuota
 from ckeditor.fields import RichTextField
 
 # Funciones adicionales:
 
-def subir_documentos(instance, filename): 
-    return 'recursos/docsolicitudes/' + filename
+def subir_documentos(instance, filename):
+    old_instance = DetalleSolicitudes.objects.get(pk=instance.pk)
+    old_instance.soportes_solicitud.delete()
+    solicitud = old_instance.solicitud_id 
+    return 'recursos/docsolicitudes/' + solicitud + '/' + filename
+
+def subir_documentos_solicitud(instance, filename): 
+    old_instance = SolicitudCredito.objects.get(pk=instance.pk)
+    old_instance.documentos_solicitud.delete()
+    usuario = old_instance._id
+    solicitud = old_instance
+    return 'recursos/docsolicitudes/' + usuario + '-' +solicitud + '/' + filename
 
 # Create your models here.
 
@@ -50,6 +61,9 @@ class SolicitudCredito(models.Model):
     credito = models.ForeignKey(LineaCredito, on_delete=CASCADE)
     monto_credito = models.DecimalField(verbose_name='Monto a Solicitar', decimal_places=2, max_digits=10)
     plazo_credito = models.PositiveIntegerField(verbose_name="Plazo en meses")
+    documentos_solicitud = models.FileField(upload_to=subir_documentos_solicitud, verbose_name='Documentos Requeridos de Solicitud', null=True, blank=True)
+    autoriza_descuento = models.FileField(upload_to=subir_documentos, verbose_name='Autorización de Descuento', null=True, blank=True)
+    pagare = models.FileField(upload_to=subir_documentos, verbose_name='Pagaré', null=True, blank=True)
     estado_solicitud = models.CharField(verbose_name='Estado de Solicitud', max_length=20, null=False, choices=EstadoSolicitud, default='Sin Atender')
     create_at = models.DateField(auto_now=False, auto_now_add=True, verbose_name="Fecha de creación", null=True, blank=True) 
     modify_at = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de actualización", null=True, blank=True)
@@ -64,6 +78,9 @@ class DetalleSolicitudes(models.Model):
     solicitud = models.ForeignKey(SolicitudCredito, on_delete=CASCADE)
     nota_solicitud = RichTextField(verbose_name="Notas de solicitud - Seguimientos", null=True, blank=True)
     valor_aprobado = models.DecimalField(verbose_name="Monto Aprobado", max_digits=10, decimal_places=2, null=False)
+    tipo_cuota = models.CharField(verbose_name="Tipo de Cuota", max_length=30, choices=TipoCuota, default='Quincenal', null=False, blank=False)
+    cuotas_pagare = models.PositiveIntegerField(verbose_name='Cantidad de Cuotas', default=0)
+    valor_cuota = models.DecimalField(verbose_name='Valor Cuota', max_digits=10, decimal_places=2, null=True, blank=True)
     fecha_desembolso = models.DateField(auto_now=False, auto_now_add=False, verbose_name="Fecha de Desembolso", null=True, blank=True)
     soportes_solicitud = models.FileField(verbose_name="Soportes", upload_to=subir_documentos, null=True, blank=True)
     create_at = models.DateField(auto_now=False, auto_now_add=True, verbose_name="Fecha de creación", null=True, blank=True) 

@@ -14,6 +14,7 @@ class Empleados(models.Model):
     fecha_ingreso = models.DateField(verbose_name="Fecha de Ingreso", auto_now=False, auto_now_add=False)
     contrato = models.CharField(verbose_name='Tipo de Contrato', max_length=100, choices=Contratos)
     correo_institucional = models.EmailField(verbose_name='Correo Institucional', unique=True, blank=True, null=True)
+    dependencia = models.CharField(verbose_name='Dependencia', max_length=180, default='N/A')
     cargo= models.CharField(verbose_name='Cargo Ocupado', max_length=180)
     estado = models.CharField(verbose_name='Condición Actual del Empleado', max_length=40, choices=EstadoEmpleado, default='Empleado/Activo')
     create_at = models.DateField(auto_now=False, auto_now_add=True, verbose_name="Fecha de creación", null=True, blank=True) 
