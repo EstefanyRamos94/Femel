@@ -21,7 +21,7 @@ class DocumentosRequeridosAdmin(admin.ModelAdmin):
         model = DocumentosRequeridos
 
 class SolicitudesCreditoAdmin(admin.ModelAdmin):
-    readonly_fields = ('create_at', 'modify_at')
+    readonly_fields = ('create_at', 'modify_at', 'estado_solicitud')
     list_display = ('usuario','credito', 'monto_credito', 'estado_solicitud')
     ordering = ('usuario','estado_solicitud', 'credito', 'monto_credito')
     search_fields = ('usuario','credito', 'monto_credito','estado_solicitud')

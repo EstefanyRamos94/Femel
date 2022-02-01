@@ -11,16 +11,10 @@ from ckeditor.fields import RichTextField
 # Funciones adicionales:
 
 def subir_documentos(instance, filename):
-    old_instance = DetalleSolicitudes.objects.get(pk=instance.pk)
-    old_instance.soportes_solicitud.delete()
-    solicitud = old_instance.solicitud_id 
-    return 'recursos/docsolicitudes/' + solicitud + '/' + filename
+    return 'recursos/docsolicitudes/' + f'{instance}' + '/' + filename
 
-def subir_documentos_solicitud(instance, filename): 
-    old_instance = SolicitudCredito.objects.get(pk=instance.pk)
-    usuario = old_instance.usuario_id
-    solicitud = old_instance   
-    nombre_solicitud = usuario + solicitud + filename
+def subir_documentos_solicitud(instance, filename):   
+    nombre_solicitud = f'{instance}' + filename
     return 'recursos/docsolicitudes/' + nombre_solicitud
 
 # Create your models here.
