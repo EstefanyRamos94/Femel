@@ -31,12 +31,26 @@ class SolicitudesCreditoAdmin(admin.ModelAdmin):
 
 class DetalleSolicitudesAdmin(admin.ModelAdmin):
     readonly_fields = ('create_at', 'modify_at')
-    list_display = ('solicitud','valor_aprobado')
+    list_display = ('empleado_tomador','linea_credito','monto_solicitado', 'valor_aprobado')
     ordering = ('solicitud',)
     search_fields = ('solicitud',)
 
     class Meta:
         model = DetalleSolicitudes
+
+    def empleado_tomador(self, obj):
+        empleado = obj.solicitud.usuario
+        return empleado
+
+    def linea_credito(self, obj):
+        linea_credito = obj.solicitud.credito
+        return linea_credito
+
+    def monto_solicitado(self, obj):
+        monto = obj.solicitud.monto_credito
+        return monto
+    
+    
 
 
 admin.site.register(LineaCredito, LineaCreditoAdmin)
