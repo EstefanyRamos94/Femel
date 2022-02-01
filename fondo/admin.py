@@ -49,9 +49,6 @@ class DetalleSolicitudesAdmin(admin.ModelAdmin):
     def monto_solicitado(self, obj):
         monto = obj.solicitud.monto_credito
         return monto
-    
-    
-
 
 admin.site.register(LineaCredito, LineaCreditoAdmin)
 admin.site.register(DocumentosRequeridos, DocumentosRequeridosAdmin)

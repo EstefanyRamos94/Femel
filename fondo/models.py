@@ -11,11 +11,11 @@ from ckeditor.fields import RichTextField
 # Funciones adicionales:
 
 def subir_documentos(instance, filename):
-    return 'recursos/docsolicitudes/' + f'{instance}' + '/' + filename
+    return 'recursos/docsolicitudes/usuarios/' + f'{instance}' + filename
 
 def subir_documentos_solicitud(instance, filename):   
-    nombre_solicitud = f'{instance}' + filename
-    return 'recursos/docsolicitudes/' + nombre_solicitud
+    nombre_solicitud = filename
+    return 'recursos/docsolicitudes/desembolsos/' + f'{instance}' + nombre_solicitud
 
 # Create your models here.
 
