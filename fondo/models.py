@@ -18,9 +18,8 @@ def subir_documentos(instance, filename):
 
 def subir_documentos_solicitud(instance, filename): 
     old_instance = SolicitudCredito.objects.get(pk=instance.pk)
-    old_instance.documentos_solicitud.delete()
-    usuario = old_instance._id
-    solicitud = old_instance
+    usuario = old_instance.usuario_id
+    solicitud = old_instance   
     return 'recursos/docsolicitudes/' + usuario + '-' +solicitud + '/' + filename
 
 # Create your models here.
