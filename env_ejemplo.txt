@@ -1,7 +1,7 @@
 SECRET=miclavesecretaexamplo
 # Variables para el manejo de la base de datos:
-DBNAME=femel
-DBUSER=root
-DBPASS=
-DBHOST=127.0.0.1
+DBNAME=nombre_de_basededatos
+DBUSER=usuario_de_basededatos
+DBPASS=password_de_basededatos
+DBHOST=http://ubicacion_del_servidor
 DBPORT=3306
