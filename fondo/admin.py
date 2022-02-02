@@ -21,7 +21,7 @@ class DocumentosRequeridosAdmin(admin.ModelAdmin):
         model = DocumentosRequeridos
 
 class SolicitudesCreditoAdmin(admin.ModelAdmin):
-    readonly_fields = ('create_at', 'modify_at')
+    readonly_fields = ('create_at', 'modify_at', 'estado_solicitud')
     list_display = ('usuario','credito', 'monto_credito', 'estado_solicitud')
     ordering = ('usuario','estado_solicitud', 'credito', 'monto_credito')
     search_fields = ('usuario','credito', 'monto_credito','estado_solicitud')
@@ -31,13 +31,24 @@ class SolicitudesCreditoAdmin(admin.ModelAdmin):
 
 class DetalleSolicitudesAdmin(admin.ModelAdmin):
     readonly_fields = ('create_at', 'modify_at')
-    list_display = ('solicitud','valor_aprobado')
+    list_display = ('empleado_tomador','linea_credito','monto_solicitado', 'valor_aprobado')
     ordering = ('solicitud',)
     search_fields = ('solicitud',)
 
     class Meta:
         model = DetalleSolicitudes
 
+    def empleado_tomador(self, obj):
+        empleado = obj.solicitud.usuario
+        return empleado
+
+    def linea_credito(self, obj):
+        linea_credito = obj.solicitud.credito
+        return linea_credito
+
+    def monto_solicitado(self, obj):
+        monto = obj.solicitud.monto_credito
+        return monto
 
 admin.site.register(LineaCredito, LineaCreditoAdmin)
 admin.site.register(DocumentosRequeridos, DocumentosRequeridosAdmin)
