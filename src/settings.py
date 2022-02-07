@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Adicional,para valores númericos:
+    'django.contrib.humanize',
     # Mis aplicaciones del aplicativo:
     'ckeditor',
     'core',
