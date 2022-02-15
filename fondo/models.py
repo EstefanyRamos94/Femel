@@ -38,6 +38,7 @@ class LineaCredito(models.Model):
     consulta_riesgo = models.CharField(verbose_name='Consulta en Central de Riesgo', max_length=2, choices=SiNo)
     periodo_vinculacion = models.CharField(verbose_name='Periodo Minimo de Vinculación', max_length=10, choices=Vinculacion)
     plazo_maximo = models.CharField(verbose_name='Plazo Máximo', max_length=10, choices=PlazoMaximo)
+    taza_eanual = models.DecimalField(verbose_name='Taza Efectiva Anual', decimal_places=2, max_digits=4, default=10.00)
     legalizacion = RichTextField(verbose_name="Legalización", null=True, blank=True)
     soportes = RichTextField(verbose_name="Soportes para Legalización", null=True, blank=True)
     inhabilidades = RichTextField(verbose_name="Inhabilidades", null=True, blank=True)

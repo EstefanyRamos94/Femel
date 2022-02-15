@@ -40,12 +40,45 @@
               <th>Solicitante</th>
               <th>Linea de Crédito</th>
               <th>Monto Solicitado</th>
-              <th>Capacidad de Deuda Mensual</th>
+              <th>Ingresos</th>
+              <th>Egresos</th>
               <th>Estado de Solicitud</th>
+              <th colspan="2">Opciones</th>
             </tr>
           </thead>
-          <tbody>
-            
+          <tbody class="text-center">
+            {% for item in data %}
+            <tr>
+              <th>
+                {{ item.0 }}
+              </th>
+              <th>
+                {{ item.9 }}
+              </th>
+              <th>
+                ${{ item.6 |floatformat:2|intcomma  }}
+              </th>
+              <td>
+                ${{ item.4|floatformat:2|intcomma  }}
+              </td>
+              <td>
+                ${{ item.5|floatformat:2|intcomma  }}
+              </td>
+              <td>
+                {{ item.11 }}
+              </td>
+              <td class="text-info d-felx">
+                <a href="/admin/empleados/datosempleado/" class="nav-link">
+                  info&nbsp;<i class="fas fa-info-circle"></i>
+                </a>
+              </td>
+              <td class="d-flex">
+                <a href="/admin/fondo/detallesolicitudes/add/" class="nav-link">
+                  Ver&nbsp;<i class="fas fa-angle-double-right"></i>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
           </tbody>   
         </table>
       </div>
@@ -128,5 +161,12 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
   {% endif %}
 {% endblock %}
