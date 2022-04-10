@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from fondo.urls import fondo_patterns
 
 urlpatterns = [
     # Rutas de core:
@@ -25,6 +26,7 @@ urlpatterns = [
     # Rutas de registration:
     path('accounts/', include('django.contrib.auth.urls')),     # Ruta para loggin
     path('accounts/', include('registration.urls')),            # Rutas de otras operaciones
+    path('fondo/', include(fondo_patterns)),
 ]
 
 # Mostrar imagenes en modo DEBUG:
