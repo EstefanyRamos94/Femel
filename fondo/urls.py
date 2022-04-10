@@ -1,9 +1,10 @@
+from unicodedata import name
 from django.urls import path
-from .views import SolicitudesDetailView, SolicitudesCreate,SolicitudesUpdate
 
-fondo_patterns = ([
-    path('', SolicitudesCreate.as_view(), name='solicitudes'),
-    path('<int:pk>/<slug:slug>/', SolicitudesDetailView.as_view(), name='solicitudes-usuario'),
-    path('nueva-solicitud/', SolicitudesCreate.as_view(), name='nuevasolicitud'),
-    path('update/<int:pk>/', SolicitudesUpdate.as_view(), name='update'),
-], 'fondo')
+# Vistas
+from .views import ListSolicitudes, GeneratePagarePDF, GenerateAutorizacionPDF
+urlpatterns = [
+    path('', ListSolicitudes.as_view(), name='listar-solicitudes'),
+    path('pdf-pagare/<int:pk>/', GeneratePagarePDF.as_view(), name='pdf-pagare'),
+    path('pdf-autorizacion-descuento/<int:pk>/', GenerateAutorizacionPDF.as_view(), name='pdf-autorizacion-descuento'),
+]
