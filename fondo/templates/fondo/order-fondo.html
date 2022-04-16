@@ -17,22 +17,43 @@
             </tr>
           </thead>
           <tbody class="text-center">
-            {% for sol in solicitudcredito_list %}
-            <tr>
-              <th>
-                {{ sol.usuario.first_name }} {{ sol.usuario.last_name }}
-              </th>
-              <th>
-                <a href="/fondo/pdf-pagare/{{ sol.id }}" class="btn btn-primary">
-                    Pagare
-                </a>
-                <a href="/fondo/pdf-autorizacion-descuento/{{ sol.id }}" class="btn btn-danger">
-                    Autorización de descuento
-                </a>
-              </th>
-              
-            </tr>
-            {% endfor %}
+            {% if request.user.is_superuser %}
+              {% for sol in solicitudcredito_list %}
+              <tr>
+                <th>
+                  {{ sol.usuario.first_name }} {{ sol.usuario.last_name }}
+                </th>
+                <th>
+                  <a href="/fondo/pdf-pagare/{{ sol.id }}" class="btn btn-primary">
+                      Pagare
+                  </a>
+                  <a href="/fondo/pdf-autorizacion-descuento/{{ sol.id }}" class="btn btn-danger">
+                      Autorización de descuento
+                  </a>
+                </th>
+                
+              </tr>
+              {% endfor %}
+            {% endif %}
+
+              {% for sol in solicitudcredito_list %}
+              <tr>
+                <th>
+                  {% if request.user.username == sol.usuario.username%}
+                  {{ sol.usuario.first_name }} {{ sol.usuario.last_name }}
+                </th>
+                <th>
+                  <a href="/fondo/pdf-pagare/{{ sol.id }}" class="btn btn-primary">
+                      Pagare
+                  </a>
+                  <a href="/fondo/pdf-autorizacion-descuento/{{ sol.id }}" class="btn btn-danger">
+                      Autorización de descuento
+                  </a>
+                </th>
+                {% endif %}
+              </tr>
+              {% endfor %}
+           
           </tbody>   
         </table>
       </div>

@@ -4,7 +4,7 @@
   {% load static %}
   {% load humanize %}
 
-  {% if request.user.is_authenticated and user.is_administrator %}
+  {% if request.user.is_authenticated %}
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <section class="container" id="dashboard">
     <div class="row">
@@ -20,6 +20,9 @@
       <div class="col mt-2 mx-1 card text-primary bg-light mb-3">
         <div class="card-header text-success">Contácto</div>
         <div class="card-body">
+          <div class="text-center col">
+            <a href="/fondo/" class="btn btn-danger text-center">Imprimir Documentos de crédito</a>
+          </div>
           <h5 class="card-title">Lineas de atención</h5>
           <p class="card-text"><strong>Email:</strong>&nbsp;femel@mail.com <br><strong>Teléfono:</strong>&nbsp;604 5673452</p>
         </div>
@@ -182,13 +185,12 @@
       </div>
     </div>
   </footer>
-
+  {% endif %}
   <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
   </script>
-  {% endif %}
-  {% endif %}
+{% endif %}
 {% endblock %}
