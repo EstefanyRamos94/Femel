@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Adicional,para valores númericos:
+    'django.contrib.humanize',
     # Mis aplicaciones del aplicativo:
     'ckeditor',
     'core',
@@ -168,4 +170,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-#ADMIN.SITE.TITTLE = 'Administración FEMEL'
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

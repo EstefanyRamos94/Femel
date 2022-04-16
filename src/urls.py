@@ -25,6 +25,7 @@ urlpatterns = [
     # Rutas de registration:
     path('accounts/', include('django.contrib.auth.urls')),     # Ruta para loggin
     path('accounts/', include('registration.urls')),            # Rutas de otras operaciones
+    path('fondo/', include('fondo.urls')),            # Rutas de otras operaciones
 ]
 
 # Mostrar imagenes en modo DEBUG:
