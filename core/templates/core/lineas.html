@@ -21,6 +21,7 @@
                   <tbody class="text-center">  
                     {% for item in lineacredito_list %}
                         {% autoescape off%}
+                        <tr>
                             <th>{{ item.nombre_linea }}</th>    
                             <th>{{ item.destino }}</th>
                             <th>{{ item.consulta_riesgo }}</th>
@@ -28,7 +29,8 @@
                             <th>{{ item.plazo_maximo}}</th>
                             <th>{{ item.taza_eanual }}</th>
                             <th>{{ item.soportes }}</th>
-                            <th><a class="nav-link" href="/admin/fondo/lineacredito/{{ item.id }}">Ver más</a></th>                        
+                            <th><a class="nav-link" href="/admin/fondo/lineacredito/{{ item.id }}">Ver más</a></th>
+                        </tr>                        
                         {% endautoescape %}
                     {% endfor %}
                   </tbody>
