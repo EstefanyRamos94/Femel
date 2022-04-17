@@ -1,28 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
-from fondo.models import LineaCredito
+from fondo.models import LineaCredito, SolicitudCredito
 from django.db import connection
 
 # Create your views here.
-class HomePageView(TemplateView):
+class HomePageView(ListView):
     # Atributo que indica que template html debe usar:
     template_name = 'core/index.html'
-    cursor = connection.cursor()
-    sql = 'SELECT * FROM femel.Notificaciones_Solicitudes';
-    cursor.execute(sql)
-    tabla = []
-    for row in cursor.fetchall():
-        tabla.append(row)
-    
+    model = SolicitudCredito
 
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {
-            'titulo': 'FEMEL',
-            'mensaje': 'Prototipo funcional para la administración de fondos de empleados',
-            'boton': 'Ingresar',
-            'data': self.tabla
-        })
+   
 
 class TeamPageView(TemplateView):
     template_name = 'core/team.html'

@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pagaré {{ profile.usuario.first_name|upper }}</title>
 </head>
 <body>
     <style>
         p {
             font-size: 14px;
+            text-align: justify;
         }
     </style>
     <h2>PAGARÉ</h2>
@@ -24,8 +25,8 @@
 
     <p>
         YO, <strong>{{ profile.usuario.first_name|upper }} {{ profile.usuario.last_name|upper }}</strong> identificado con la cédula de ciudadanía
-        número <strong>{{ profile.cedula|intcomma }}</strong> expedida en ,________________respectivamente declaro: PRIMERO:
-        Me obligo a pagar la orden de __________, persona jurídica constituida como __________, con domicilio principal en Medellín, o a quien represente sus derechos
+        número <strong>{{ profile.cedula|intcomma }}</strong> expedida en {{ profile.lugar_nacimiento }}, respectivamente declaro: PRIMERO:
+        Me obligo a pagar la orden de <strong>Fondo de Empleados</strong>, persona jurídica constituida como <strong>FEMEL</strong>, con domicilio principal en Medellín, o a quien represente sus derechos
         en sus oficinas o a su orden, el día <strong>{{ detalle.fecha_desembolso|date:'d'}}</strong> de <strong>{{ detalle.fecha_desembolso|date:'M'}}</strong> del año <strong>{{ detalle.fecha_desembolso|date:'Y'}}</strong>,
         la suma de <strong>{{ num_letra|upper }}</strong> (<strong>${{ detalle.valor_aprobado|intcomma }}</strong>) moneda corriente. SEGUNDO: -INTERESES
         DE MORA: En caso de mora en el pago del importe total o de cualquiera de las cuotas
@@ -81,8 +82,10 @@
         DEUDOR
     </p>
     <br><br>
-    <p>Firma: _________________________________</p>
-    <p>Nombre: {{ profile.usuario.first_name }} {{ profile.usuario.last_name }}</p>
-    <p>CC: {{ profile.cedula|intcomma }}</p>
+    <p>
+        Firma: _________________________________<br>
+        Nombre: <strong>{{ profile.usuario.first_name }} {{ profile.usuario.last_name }}</strong><br>
+        C.C.: <strong>{{ profile.cedula|intcomma }}</strong> de <strong>{{ profile.lugar_nacimiento }}</strong>
+    </p>
 </body>
 </html>

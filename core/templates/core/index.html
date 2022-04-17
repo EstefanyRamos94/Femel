@@ -4,7 +4,7 @@
   {% load static %}
   {% load humanize %}
 
-  {% if request.user.is_authenticated %}
+  {% if request.user.is_superuser %}
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <section class="container" id="dashboard">
     <div class="row">
@@ -21,13 +21,13 @@
         <div class="card-header text-success">Contácto</div>
         <div class="card-body">
           <div class="text-center col">
-            <a href="/fondo/" class="btn btn-danger text-center">Imprimir Documentos de crédito</a>
+            <a href="/fondo/" class="btn btn-danger text-center">Ver Documentos de crédito Gestionados</a>
           </div>
           <h5 class="card-title">Lineas de atención</h5>
           <p class="card-text"><strong>Email:</strong>&nbsp;femel@mail.com <br><strong>Teléfono:</strong>&nbsp;604 5673452</p>
         </div>
       </div>
-
+      
       <div class="col-12 table-responsive">
         <table class="table table-striped table-hover table-bordered">
           <thead class="bg-success text-light text-center">
@@ -35,44 +35,42 @@
               <th>Solicitante</th>
               <th>Linea de Crédito</th>
               <th>Monto Solicitado</th>
-              <th>Ingresos</th>
-              <th>Egresos</th>
+              <th>Fecha de Solicitud</th>
               <th>Estado de Solicitud</th>
               <th colspan="2">Opciones</th>
             </tr>
           </thead>
-          <tbody class="text-center">
-            {% for item in data %}
-            <tr>
-              <th>
-                {{ item.0 }}
-              </th>
-              <th>
-                {{ item.9 }}
-              </th>
-              <th>
-                ${{ item.6 |floatformat:2|intcomma  }}
-              </th>
-              <td>
-                ${{ item.4|floatformat:2|intcomma  }}
-              </td>
-              <td>
-                ${{ item.5|floatformat:2|intcomma  }}
-              </td>
-              <td>
-                {{ item.11 }}
-              </td>
-              <td class="text-info d-felx">
-                <a href="/admin/empleados/datosempleado/" class="nav-link">
-                  info&nbsp;<i class="fas fa-info-circle"></i>
-                </a>
-              </td>
-              <td class="d-flex">
-                <a href="/admin/fondo/detallesolicitudes/add/" class="nav-link">
-                  Ver&nbsp;<i class="fas fa-angle-double-right"></i>
-                </a>
-              </td>
-            </tr>
+          <tbody class="text-center">   
+            {% for sol in solicitudcredito_list%}
+              {% if sol.estado_solicitud != "Aceptada" %}
+                <tr>
+                  <th>
+                    {{ sol.usuario.first_name }} {{ sol.usuario.last_name }}
+                  </th>
+                  <th>
+                    {{ sol.credito}}
+                  </th>
+                  <th>
+                    ${{ sol.monto_credito|floatformat:2|intcomma  }}
+                  </th>
+                  <td>
+                    {{ sol.modify_at }}
+                  </td>
+                  <td>
+                    {{ sol.estado_solicitud }}
+                  </td>
+                  <td class="text-info d-felx">
+                    <a href="/admin/empleados/datosempleado/" class="nav-link">
+                      info&nbsp;<i class="fas fa-info-circle"></i>
+                    </a>
+                  </td>
+                  <td class="d-flex">
+                    <a href="/admin/fondo/detallesolicitudes/add/" class="nav-link">
+                      Ver&nbsp;<i class="fas fa-angle-double-right"></i>
+                    </a>
+                  </td>
+                </tr>
+              {% endif %}
             {% endfor %}
           </tbody>   
         </table>
@@ -125,7 +123,7 @@
             <a class="btn btn-lg btn-success" href="{% url 'profile' %}">Ver Perfil</a>
           {% else %}
             <p class="lead fw-normal">{{ mensaje }}</p>
-            <a class="btn btn-lg btn-primary" href="{% url 'login' %}">{{ boton }}</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'login' %}">Ingresar</a>
           {% endif %}
 
         </div>
@@ -134,7 +132,7 @@
   </main>
   {% if request.user.is_authenticated %}
     <div class="text-center">
-      <a href="{% url 'fondo:nuevasolicitud' %}" class="btn btn-lg btn-info">Ver Solicitudes de Crédito</a>
+      <a href="/fondo/" class="btn btn-lg btn-info">Ver Solicitudes de Crédito</a>
     </div>
   {% else %}
   <footer class="container py-5">

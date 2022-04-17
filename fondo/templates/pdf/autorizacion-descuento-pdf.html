@@ -21,7 +21,7 @@
     <br><br>
 
     <p>
-        Yo <strong>{{ profile.usuario.first_name|upper }} {{ profile.usuario.last_name|upper }}</strong> Identificado(a) con Cédula de Ciudadanía número <strong>{{ profile.cedula|intcomma }}</strong> expedida en _______________________ , en mi calidad de empleado autorizo de 
+        Yo <strong>{{ profile.usuario.first_name|upper }} {{ profile.usuario.last_name|upper }}</strong> Identificado(a) con Cédula de Ciudadanía número <strong>{{ profile.cedula|intcomma }}</strong> expedida en {{ profile.lugar_nacimiento }}, en mi calidad de empleado autorizo de 
         manera expresa a mí empleador <strong>FEMEL</strong> para que me sea descontado de mi salario, 
         comisiones, bonificaciones, variable, prestaciones sociales, indemnizaciones, y cualquier devengo al 
         que tenga derecho, el valor total de (<strong>{{ credit_letras|upper }}</strong> PESOS COLOMBIANOS ) 
